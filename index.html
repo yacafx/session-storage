@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Session Storage 101</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <input type="text" id="txtField">
+  <p><button onclick="save()" type="button">Guardar en Session Storage</button></p>
+  <div id="result"></div>
+  <p>haz click en el botón para guardar.</p>
+  <p>Actualiza la ventana para que verifiques que los datos siguen allí</p>
+  <p>Revisa en el inspector de código que los datos estan el objeto Session Storage</p>
+
+  <script>
+    showLocalData();
+
+    function save() {
+      if (typeof(Storage) !== "undefined") {
+        sessionStorage.data = document.getElementById("txtField").value;
+        showLocalData();
+      } else {
+        document.getElementById("result").innerHTML = "Tu navegador no soporta web storage...";
+      }
+    }
+
+    function showLocalData() {
+      document.getElementById("result").innerHTML = "El dato guardado en Session Storage es: <b> " + sessionStorage.data + "</b>";
+
+    }
+  </script>
+</body>
+
+</html>
